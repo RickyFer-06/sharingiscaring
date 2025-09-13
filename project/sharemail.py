@@ -8,9 +8,9 @@ url = f"https://docs.google.com/spreadsheets/d/{url_code.read()}/export?format=c
 subject = define_subject()
 list = define_list(url)
 server = smtplib.SMTP("smtp.gmail.com", 587)
-email = "ricardoalexferreira2006@gmail.com" #Alterar consoante email
+email = " " #Alterar consoante email aqui.
 server.starttls()
-server.login(email, "ffhy ojmw oqin iiqv ") #Alterar consoante email
+server.login(email, " ") #Alterar consoante email aqui.
     
 for i in range(0,len(list),2):
     name_receiver = list[i]
