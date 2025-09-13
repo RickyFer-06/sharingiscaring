@@ -1,4 +1,4 @@
-Este projeto tem como principal objetivo desenvolver uma ferramenta de email automática que, através de um ficheiro google sheets, envie um conjunto de emails pré-formatados pelo utilizador. Vale realçar que o programa apenas deve ser usado quando o forms associado ao ficheiro de google sheets for efetivamente fechado.
+Este projeto tem como principal objetivo desenvolver uma ferramenta de email automática que, através de um ficheiro google sheets, envie um conjunto de emails pré-formatados pelo utilizador. Vale realçar que o programa apenas deve ser usado quando o forms associado ao ficheiro de google sheets for efetivamente fechado. O programa não necessita de acesso constante a um servidor, tratando-se de uma ferramenta de instância.
 
 Como usar este ficheiro??
 - A alteração da mensagem do email pode ser alterada em "module.py" na função define_message.
