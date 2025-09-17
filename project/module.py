@@ -1,6 +1,10 @@
 import smtplib
 import pandas as pd
 from email.mime.text import MIMEText
+from itertools import groupby
+
+def remove_repetidas(word):
+    return ''.join(k for k, _ in groupby(word))
 
 def define_subject():
     assunto = open("project/subject_df.txt", encoding="utf-8")
@@ -14,6 +18,7 @@ def define_list(url):
     nomes = df["Nome"].dropna().tolist()
 
     for i in range(len(emails)):
+        nomes[i] = remove_repetidas(nomes[i])
         nomes[i] = nomes[i].casefold()
         nomes[i] = nomes[i].capitalize()
         list.append(nomes[i])
