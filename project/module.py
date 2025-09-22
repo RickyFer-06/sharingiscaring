@@ -1,6 +1,8 @@
 import smtplib
 import pandas as pd
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
 
 def capitalize_string(name):
     name = name.casefold()
@@ -44,16 +46,17 @@ def define_message (name):
     return message
 
 def email_sender (email_receiver, name_receiver, subject, email, server):
-    message = define_message(name_receiver)
-    message = MIMEText(message, "plain", "UTF-8")
-    message["Subject"] = subject
-    message["X-Priority"] = "1" #Alterar a importância do email
-    message["Importance"] = "High" #Alterar a importância do email
-    message["Reply-To"] = email
-    message['From'] = email
-    message['To'] = email_receiver
+    msg = define_message(name_receiver)
+    msg = MIMEText(msg, "plain", "UTF-8")
+    msg["Subject"] = subject
+    msg["X-Priority"] = "1" #Alterar a importância do email
+    msg["Importance"] = "High" #Alterar a importância do email
+    msg["Reply-To"] = email
+    msg['From'] = email
+    msg['To'] = email_receiver
 
-    server.sendmail(email, email_receiver, message.as_string())
+
+    server.sendmail(email, email_receiver, msg.as_string())
     print("Email sent to: " + name_receiver + "\n" + email_receiver)
     print("\n")
     return
