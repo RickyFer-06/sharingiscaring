@@ -5,8 +5,7 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 
 def capitalize_string(name):
-    name = name.casefold()
-    name = name.capitalize()
+    name = name.casefold().capitalize()
     result = name[0]
     list = []
     for j in name:
