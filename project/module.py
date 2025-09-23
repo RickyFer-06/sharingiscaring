@@ -55,6 +55,7 @@ def email_sender (email_receiver, name_receiver, subject, email, server):
     msg = MIMEMultipart()
     msg["Subject"] = subject
     msg["X-Priority"] = "3" #Alterar a importância do email
+    #msg["Importance"] = "High"
     msg["Reply-To"] = email
     msg['From'] = email
     msg['To'] = email_receiver
