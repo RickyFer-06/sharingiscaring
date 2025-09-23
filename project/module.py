@@ -37,23 +37,36 @@ def define_list(url):
 #Aqui é possível realizar-se a alteração da mensagem do email.
 def define_message (name):
     message = f"""
-        Bom dia, {name}!
-        
-        Confirmamos a tua inscrição no evento!
-        
-        Cumprimentos,
-        ShARE-UP."""
+<html>
+    <body>
+        <p> Olá, {name}!</p>
+        <br>
+        <p>Gostaríamos de confirmar a tua inscrição no evento da ShARE-UP - Perspetivas, edição 2025.</p>
+        <br>
+        <p>Cumprimentos,
+            Equipa de CR.
+        </p>
+        <img src="cid:myimage">
+    </body>
+</html>"""
     return message
 
 def email_sender (email_receiver, name_receiver, subject, email, server):
-    msg = define_message(name_receiver)
-    msg = MIMEText(msg, "plain", "UTF-8")
+    msg = MIMEMultipart()
     msg["Subject"] = subject
-    msg["X-Priority"] = "1" #Alterar a importância do email
-    msg["Importance"] = "High" #Alterar a importância do email
+    msg["X-Priority"] = "3" #Alterar a importância do email
     msg["Reply-To"] = email
     msg['From'] = email
     msg['To'] = email_receiver
+    txt = define_message(name_receiver)
+    txt = MIMEText(txt, "html", "UTF-8",)
+    msg.attach(txt)
+
+    image = open("project/gto.jpeg","rb")
+    image = image.read()
+    image = MIMEImage(image,name="Cats")
+    image.add_header("Content-ID","<myimage>")
+    msg.attach(image)
 
 
     server.sendmail(email, email_receiver, msg.as_string())
