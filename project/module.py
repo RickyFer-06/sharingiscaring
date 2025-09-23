@@ -36,17 +36,18 @@ def define_list(url):
 
 #Aqui é possível realizar-se a alteração da mensagem do email.
 def define_message (name):
-    message = f"""
+    message = f""" 
 <html>
+
     <body>
-        <p> Olá, {name}!</p>
+        <p>Olá, {name}!</p>
         <br>
-        <p>Gostaríamos de confirmar a tua inscrição no evento da ShARE-UP - Perspetivas, edição 2025.</p>
+        <p>Gostaríamos de confirmar a tua inscrição no Perspetivas, edição 2025.</p>
         <br>
         <p>Cumprimentos,
             Equipa de CR.
         </p>
-        <img src="cid:myimage">
+        <img src="cid:myimage" style="width: 400px;">
     </body>
 </html>"""
     return message
@@ -63,10 +64,11 @@ def email_sender (email_receiver, name_receiver, subject, email, server):
     txt = MIMEText(txt, "html", "UTF-8",)
     msg.attach(txt)
 
-    image = open("project/gto.jpeg","rb")
+    image = open("project/share.png","rb")
     image = image.read()
-    image = MIMEImage(image,name="Cats")
+    image = MIMEImage(image,name="SHARE")
     image.add_header("Content-ID","<myimage>")
+    image.add_header("Content-Disposition","inline",filename="project/share.png")
     msg.attach(image)
 
 
